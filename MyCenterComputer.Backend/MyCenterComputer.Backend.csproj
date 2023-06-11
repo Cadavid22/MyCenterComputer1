@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyCenterComputer.Frontend\MyCenterComputer.Frontend.csproj" />
     <ProjectReference Include="..\MyCenterComputer.shared\MyCenterComputer.shared.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 
+using MyCenterComputer.shared.Entities;
+
 namespace CenterComputer.Backend.Data
 {
     public class DataContext : DbContext
@@ -13,7 +15,7 @@ namespace CenterComputer.Backend.Data
 
         }
 
-        public DbSet<MyCenterComputer> MyCenterComputers { get; set; }
+        public DbSet<MyCenterComputers> CenterComputers { get; set; }
 
     }
 }

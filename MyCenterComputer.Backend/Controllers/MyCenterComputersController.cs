@@ -1,19 +1,19 @@
 ﻿using CenterComputer.Backend.Data;
 using Microsoft.AspNetCore.Mvc;
-using MyCenterComputer.shared.Entities;
+
 using Microsoft.AspNetCore.Http;
 
-namespace MyCenterComputer.Backend.Controllers
+namespace CenterComputer.Backend.Controllers
 {
-    public class MyCenterComputersController : Controller
+    public class MyCenterComputerController : Controller
     {
         [Route("api/[controller]")]
         [ApiController]
-        public class MyCenterComputerController : ControllerBase
+        public class MyCenterComputersController : ControllerBase
         {
             private readonly DataContext _context;
 
-            public MyCenterComputerController(DataContext context)
+            public MyCenterComputersController(DataContext context)
             {
                 _context = context;
             }
@@ -21,13 +21,13 @@ namespace MyCenterComputer.Backend.Controllers
             [HttpGet]
             public IActionResult Get()
             {
-                return Ok(_context.MyCenterComputers.ToList());
+                return Ok(_context.CenterComputers.ToList());
             }
 
             [HttpGet("{id:int}")]
             public IActionResult Get(int id)
             {
-                var computer = _context.MyCenterComputers.FirstOrDefault(x => x.Id == id);
+                var computer = _context.CenterComputers.FirstOrDefault(x => x.Id == id);
                 if (computer == null)
                 {
                     return NotFound();
@@ -37,7 +37,7 @@ namespace MyCenterComputer.Backend.Controllers
 
 
             [HttpPost]
-            public IActionResult Post(Controllers.MyCenterComputersController computer)
+            public IActionResult Post(Controllers.MyCenterComputerController computer)
             {
                 _context.Add(computer);
                 _context.SaveChanges();
@@ -47,25 +47,25 @@ namespace MyCenterComputer.Backend.Controllers
 
 
             [HttpPut]
-            public IActionResult Put(Controllers.MyCenterComputersController computer)
+            public IActionResult Put(Controllers.MyCenterComputerController computer)
             {
-                var Mycomputer = _context.MyCenterComputers.FirstOrDefault(x => x.Id == computer.Id);
+                var Mycomputer = _context.CenterComputers.FirstOrDefault(x => x.Id== computer.Id);
                 if (computer == null)
                 {
                     return NotFound();
                 }
-                computer.Type = Mycomputer.Type;
-                computer.Brand = Mycomputer.Brand;
-                computer.Name = Mycomputer.Name;
-                computer.LastName = Mycomputer.LastName;
-                computer.Phone = Mycomputer.Phone;
-                computer.Email = Mycomputer.Email;
-                computer.Diagnosis = Mycomputer.Diagnosis;
-                computer.Coments = Mycomputer.Coments;
-                computer.Status = Mycomputer.Status;
-                computer.Value = Mycomputer.Value;
-                computer.DateStarted = Mycomputer.DateStarted;
-                computer.DateFinished = Mycomputer.DateFinished;
+                Mycomputer.Type = Mycomputer.Type;
+                Mycomputer.Brand = Mycomputer.Brand;
+                Mycomputer.Name = Mycomputer.Name;
+                Mycomputer.LastName = Mycomputer.LastName;
+                Mycomputer.Phone = Mycomputer.Phone;
+                Mycomputer.Email = Mycomputer.Email;
+                Mycomputer.Diagnosis = Mycomputer.Diagnosis;
+                Mycomputer.Coments = Mycomputer.Coments;
+                Mycomputer.Status = Mycomputer.Status;
+                Mycomputer.Value = Mycomputer.Value;
+                Mycomputer.DateStarted = Mycomputer.DateStarted;
+                Mycomputer.DateFinished = Mycomputer.DateFinished;
 
                 _context.Update(computer);
                 _context.SaveChanges();
@@ -75,7 +75,7 @@ namespace MyCenterComputer.Backend.Controllers
             [HttpDelete("{id:int}")]
             public IActionResult Delete(int Id)
             {
-                var Mycomputer = _context.MyCenterComputers.FirstOrDefault(x => x.Id == Id);
+                var Mycomputer = _context.CenterComputers.FirstOrDefault(x => x.Id == Id);
                 if (Mycomputer == null)
                 {
                     return NotFound();
